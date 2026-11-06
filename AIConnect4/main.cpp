@@ -1,15 +1,18 @@
 #include "raylib.h"
+#include "game.h"
 
 int main()
 {
-    InitWindow(800, 450, "Raylib test");
+    InitWindow(1920, 1080, "Raylib test");
     SetTargetFPS(60);
+
+    Game game;
 
     while (!WindowShouldClose())
     {
+        game.Update();
         BeginDrawing();
-        ClearBackground(RAYWHITE);
-        DrawText("Raylib is working!", 250, 200, 30, DARKGREEN);
+        game.Draw();
         EndDrawing();
     }
 
