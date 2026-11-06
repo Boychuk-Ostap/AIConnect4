@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="AIConnect4/AIConnect4.vcxproj" Id="41dfa87c-b58c-4691-b71d-7c3df4fb54fc" />
+</Solution>
