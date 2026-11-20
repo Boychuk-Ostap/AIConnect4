@@ -24,6 +24,11 @@ public:
 
 	bool DropPiece(int column);
 
+	// One full turn for search: drop a piece, then rotate and apply gravity
+	// straight away when this drop is the 4th move of the cycle.
+	// The on-screen game uses the same rules, with the rotation animated.
+	bool PlayTurn(int column);
+
 	int GetCell(int row, int column) const;
 	int GetRowCount() const;
     int GetColumnCount() const;
@@ -32,6 +37,7 @@ public:
     int GetMovesUntilShift() const;
     bool IsGameOver() const;
     bool IsColumnOpen(int column) const;
+    std::vector<int> GetOpenColumns() const;
     bool IsShiftPending() const;
     void CommitRotation();
     void CommitGravity();

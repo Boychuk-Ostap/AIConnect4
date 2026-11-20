@@ -1,5 +1,6 @@
 #pragma once
 #include "board.h"
+#include "ai.h"
 
 class Game {
 public:
@@ -9,11 +10,19 @@ public:
 private:
 	enum Phase
 	{
+		MENU,
+		LEVELSELECTION,
 		PLAYING,
 		ROTATING,
 		FALLING
 	};
 	int ColumnUnderMouse() const;
+	void UpdateMenu();
+	void UpdateLevelSelection();
+	void StartMatch();
+	void PlayAiTurn();
+	void DrawMenu();
+	void DrawLevelSelection();
 	void DrawStatus() const;
 	void DrawBoard() const;
 	void DrawRotatingBoard() const;
@@ -23,4 +32,8 @@ private:
 	int hoveredColumn;
 	Phase phase;
 	float shiftTime;
+	bool aiThinking;
+	bool playAgainstAi;
+	AiAlgorithm selectedAlgorithm;
+	Difficulty selectedDifficulty;
 };

@@ -54,6 +54,19 @@ bool Board::DropPiece(int column)
 	return true;
 }
 
+bool Board::PlayTurn(int column)
+{
+	if (!DropPiece(column))
+		return false;
+
+	if (IsShiftPending())
+	{
+		CommitRotation();
+		CommitGravity();
+	}
+	return true;
+}
+
 int Board::GetCell(int row, int column) const
 {
 	return grid[row][column];
@@ -94,6 +107,17 @@ bool Board::IsColumnOpen(int column) const
 	if (column < 0 || column >= columnCount)
 		return false;
 	return grid[0][column] == EMPTY;
+}
+
+std::vector<int> Board::GetOpenColumns() const
+{
+	std::vector<int> columns;
+	for (int column = 0; column < columnCount; column++)
+	{
+		if (IsColumnOpen(column))
+			columns.push_back(column);
+	}
+	return columns;
 }
 
 bool Board::IsShiftPending() const

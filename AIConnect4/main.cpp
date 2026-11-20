@@ -3,7 +3,7 @@
 
 int main()
 {
-    InitWindow(1920, 1080, "Raylib test");
+    InitWindow(1920, 1080, "Gravity Shift Connect 4");
     SetTargetFPS(60);
 
     Game game;
